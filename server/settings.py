@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-e-=ty___&7f%8b_y^y$%_-&wg@o83hlh^5-4cky%0z^$tbl)e_"
+SECRET_KEY = str(os.getenv("SECRET_KEY"))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,6 +87,18 @@ DATABASES = {
     }
 }
 
+# Final data base before production
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': str(os.getenv("NAME")),
+        'USER': str(os.getenv("USER")),
+        'PASSWORD': str(os.getenv("PASSWORD")),
+        'HOST': str(os.getenv("HOST")),
+    }
+}
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
